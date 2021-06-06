@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Mappeter for Geographers - Make A Map</title>
+<link rel="icon" href="images/favicon.png">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.0/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; height: 120%; }
+body {
+overflow: hidden;
+}
+</style>
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+      type="text/css"
+    />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
+      type="text/css"
+    />
+
+</head>
+<body>
+<style>
+#menu {
+position: absolute;
+background: #efefef;
+padding: 10px;
+font-family: 'Open Sans', sans-serif;
+}
+</style>
+
+<center><img src="logo.png" alt="Mappeter"></center>
+<center><p style="font-family: Cambria; font-size: 16px">by Savir</p></center>
+<a style="margin-left: 12px; color: green" href="map.html">For Geographers</a>
+ 
+<div id="map"></div>
+ 
+<div id="menu">
+<center><img src="logo.png" alt="Mappeter"></center>
+<center><p style="font-family: Cambria; font-size: 16px">by Savir</p></center>
+<a style="margin-left: 12px; color: green" href="https://mappeter.github.io">For Regular Use</a>
+<input id="satellite-v9" type="radio" name="rtoggle" value="satellite" checked="checked">
+<!-- See a list of Mapbox-hosted public styles at -->
+<!-- https://docs.mapbox.com/api/maps/styles/#mapbox-styles -->
+<label for="satellite-v9">satellite</label>
+<input id="light-v10" type="radio" name="rtoggle" value="light">
+<label for="light-v10">light</label>
+<input id="dark-v10" type="radio" name="rtoggle" value="dark">
+<label for="dark-v10">dark</label>
+<input id="streets-v11" type="radio" name="rtoggle" value="streets">
+<label for="streets-v11">streets</label>
+<input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors">
+<label for="outdoors-v11">outdoors</label>
+</div>
+<script>
+	// TO MAKE THE MAP APPEAR YOU MUST
+	// ADD YOUR ACCESS TOKEN FROM
+	// https://account.mapbox.com
+	mapboxgl.accessToken = 'pk.eyJ1Ijoic2F2aXJzaW5naCIsImEiOiJja3BsYWZ4NnUwbWNtMnVyeGg0N3NrYzYxIn0.bI8QOlyyH35Tw1ayTwPUIw';
+var map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+center: [-2.81361, 36.77271], // starting position [lng, lat]
+zoom: 13 // starting zoom
+});
+ 
+var layerList = document.getElementById('menu');
+var inputs = layerList.getElementsByTagName('input');
+ 
+function switchLayer(layer) {
+var layerId = layer.target.id;
+map.setStyle('mapbox://styles/mapbox/' + layerId);
+}
+ 
+for (var i = 0; i < inputs.length; i++) {
+inputs[i].onclick = switchLayer;
+}
+</script>
+ 
+</body>
+</html>
